@@ -1,0 +1,8 @@
+{
+    "name": "Image",
+    "description": "Simply shows an Image",
+    "icon": "extension",
+    "type": "visualization",
+    "version": "1.0",
+    "author": "Ralf Becher, irregular.bi"
+}
