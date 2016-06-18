@@ -73,7 +73,7 @@ define([
                         title: layout.imageTitle
                     });
 
-                if (layout.imageLink != "") {
+                if (layout.imageLink != "" && !isEditMode(this)) {
                     var link = $('<a />').attr({
                         href: layout.imageLink,
                         target: "_blank"
@@ -82,6 +82,10 @@ define([
                     $element.append(link);
                 } else {
                     $element.empty().append(img);
+                }
+
+                function isEditMode(obj) {
+                    return (obj.inEditState()) || (window.location.pathname.substring(window.location.pathname.length - 10) == "state/edit");
                 }
 
             }
