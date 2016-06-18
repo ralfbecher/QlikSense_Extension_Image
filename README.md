@@ -4,6 +4,14 @@ This extension simply shows an image and gives some properties for dynamic confi
 
 ![QlikSense Extension Image](Screenshot1.PNG)
 
+### Parameters
+
+1. Image Path: relative or absolute path to the image file (content library or external)
+2. Image File: image file name, use variable expression here for flexibility
+3. Image Style CSS: style attribute value for img tag, use "width:100%;" for strech-to-fit, optional
+4. Image Title: title attribute value for img tag. is shown as popup on hover, optional
+5. Image Link: an URL to create an anchor tag (HTML link), optional
+
 ### Author
 
 **Ralf Becher**
