@@ -1,9 +1,8 @@
 define([
-  'jquery',
-  'qlik',
-  'css!./style.css'
-],
+  'jquery', 'qlik', 'css!./style.css'],
     function ($, qlik) {
+        'use strict';
+
         return {
             initialProperties: {
                 version: 1.0
@@ -60,6 +59,9 @@ define([
                     }
                 }
             },
+            support: {
+                export: true
+            },
             snapshot: {
                 canTakeSnapshot: true
             },
@@ -82,6 +84,9 @@ define([
                     $element.append(link);
                 } else {
                     $element.empty().append(img);
+                }
+                if (qlik.Promise) {
+                    return qlik.Promise.resolve();
                 }
 
                 function isEditMode(obj) {
