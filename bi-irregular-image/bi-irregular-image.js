@@ -1,5 +1,4 @@
-define([
-  'jquery', 'qlik', 'css!./style.css'],
+define(['jquery', 'qlik'],
     function ($, qlik) {
         'use strict';
 
@@ -52,6 +51,13 @@ define([
                                         type: "string",
                                         defaultValue: "",
                                         expression: "optional"
+                                    },
+                                    fullScreen: {
+                                        ref: "fullScreen",
+                                        type: "boolean",
+                                        component: "checkbox",
+                                        label: "Full Screen Option (press F5 after change)",
+                                        defaultValue: false
                                     }
                                 }
                             }
@@ -63,7 +69,7 @@ define([
                 export: true
             },
             snapshot: {
-                canTakeSnapshot: true
+                canTakeSnapshot: false
             },
             paint: function ($element, layout) {
 
@@ -74,7 +80,6 @@ define([
                         style: layout.imageStyle,
                         title: layout.imageTitle
                     });
-
                 if (layout.imageLink != "" && !isEditMode(this)) {
                     var link = $('<a />').attr({
                         href: layout.imageLink,
@@ -85,6 +90,10 @@ define([
                 } else {
                     $element.empty().append(img);
                 }
+                if (!layout.fullScreen) {
+                    $("<style type='text/css'>.qv-object-bi-irregular-image ~ .qv-object-nav .icon-zoom-in {display: none;}</style>").appendTo("head");
+                }
+
                 if (qlik.Promise) {
                     return qlik.Promise.resolve();
                 }
