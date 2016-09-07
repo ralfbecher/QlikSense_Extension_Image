@@ -90,8 +90,12 @@ define(['jquery', 'qlik'],
                 } else {
                     $element.empty().append(img);
                 }
+                // switch Full Screen option
                 if (!layout.fullScreen) {
-                    $("<style type='text/css'>.qv-object-bi-irregular-image ~ .qv-object-nav .icon-zoom-in {display: none;}</style>").appendTo("head");
+                    // prevent multiple style elements
+                    if ($('#bi-irregular-image-fullscreen').length == 0) {
+                        $("<style type='text/css' id='bi-irregular-image-fullscreen'>.qv-object-bi-irregular-image ~ .qv-object-nav .icon-zoom-in {display: none;}</style>").appendTo("head");
+                    }
                 }
 
                 if (qlik.Promise) {
