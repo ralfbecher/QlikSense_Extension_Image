@@ -116,7 +116,6 @@ define(['jquery', 'qlik'],
                     }
                 }
 
-                console.log(layout);
                 if (layout.hasOwnProperty('removeHeader') || layout.hasOwnProperty('removePadding')) {
                     var elem = $("[tid='" + layout.qInfo.qId + "']");
 
