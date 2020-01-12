@@ -52,13 +52,31 @@ define(['jquery', 'qlik'],
                                         defaultValue: "",
                                         expression: "optional"
                                     },
+                                    hint: {
+                                        component: "text",
+                                        label: "Press F5 after change of these options:"
+                                    },
                                     fullScreen: {
                                         ref: "fullScreen",
                                         type: "boolean",
                                         component: "checkbox",
-                                        label: "Full Screen Option (press F5 after change)",
+                                        label: "Full Screen Option",
                                         defaultValue: false
-                                    }
+                                    },
+                                    removeHeader: {
+                                        ref: "removeHeader",
+                                        type: "boolean",
+                                        component: "checkbox",
+                                        label: "Remove Sheet Object Header",
+                                        defaultValue: false
+                                    },
+                                    removePadding: {
+                                        ref: "removePadding",
+                                        type: "boolean",
+                                        component: "checkbox",
+                                        label: "Remove Sheet Object Padding",
+                                        defaultValue: false
+                                    }        
                                 }
                             }
                         }
@@ -95,6 +113,18 @@ define(['jquery', 'qlik'],
                     // prevent multiple style elements
                     if ($('#bi-irregular-image-fullscreen').length == 0) {
                         $("<style type='text/css' id='bi-irregular-image-fullscreen'>.qv-object-bi-irregular-image ~ .qv-object-nav .icon-zoom-in {display: none;}</style>").appendTo("head");
+                    }
+                }
+
+                console.log(layout);
+                if (layout.hasOwnProperty('removeHeader') || layout.hasOwnProperty('removePadding')) {
+                    var elem = $("[tid='" + layout.qInfo.qId + "']");
+
+                    if (layout.hasOwnProperty('removeHeader') && layout.removeHeader) {
+                        elem.find('.qv-object-header').remove();
+                    }
+                    if (layout.hasOwnProperty('removePadding') && layout.removePadding) {
+                        elem.find('.qv-inner-object').css('padding', '0 0px 0px');
                     }
                 }
 
