@@ -12,6 +12,11 @@ This extension simply shows an image and gives some properties for dynamic confi
 4. Image Title: title attribute value for img tag, is shown as popup on hover, optional
 5. Image Link: an URL to create an anchor tag (HTML link), optional
 
+To auto size and center an image, you can use this CSS style:
+```
+='position:relative;display:block;margin-top:2px;margin-right:auto;margin-bottom:auto;margin-left:auto;max-height:100%;max-width:100%;top:50%;transform:translateY(-50%);'
+```
+
 ### Author
 
 **Ralf Becher**
